@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>宠爱回家</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">12:00</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1>宠爱回家</h1>
+            <div class="header-actions">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </div>
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="搜索附近的流浪动物">
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="app-content">
+        <!-- 功能快捷入口 -->
+        <section class="quick-actions">
+            <a href="health-assessment.html" class="action-item">
+                <div class="action-icon health">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <span>健康评估</span>
+            </a>
+            <a href="discover.html" class="action-item">
+                <div class="action-icon discover">
+                    <i class="fas fa-search"></i>
+                </div>
+                <span>发现动物</span>
+            </a>
+            <a href="feeding.html" class="action-item">
+                <div class="action-icon feed">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <span>食物投喂</span>
+            </a>
+            <a href="adoption.html" class="action-item">
+                <div class="action-icon adopt">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span>我要领养</span>
+            </a>
+        </section>
+
+        <!-- 紧急救助卡片 -->
+        <section class="emergency-card">
+            <div class="emergency-content">
+                <h3><i class="fas fa-exclamation-circle"></i> 紧急救助</h3>
+                <p>发现需要紧急救助的流浪动物？</p>
+                <button class="emergency-btn">立即求助</button>
+            </div>
+        </section>
+
+        <!-- 附近动物 -->
+        <section class="nearby-pets">
+            <div class="section-header">
+                <h2>附近的流浪动物</h2>
+                <a href="#" class="view-all">查看全部 <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="pets-grid">
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba" alt="橘猫小暖">
+                    <div class="pet-info">
+                        <h4>橘猫小暖</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> 500m</p>
+                        <span class="status urgent">需要救助</span>
+                    </div>
+                </div>
+                <div class="pet-card">
+                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="小白">
+                    <div class="pet-info">
+                        <h4>小白</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> 1.2km</p>
+                        <span class="status success">已救助</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 数据概览 -->
+        <section class="statistics">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stat-data">
+                    <h3>12,345</h3>
+                    <p>已救助</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-data">
+                    <h3>5,678</h3>
+                    <p>志愿者</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="stat-data">
+                    <h3>890</h3>
+                    <p>救助点</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="discover.html" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="feeding.html" class="nav-item">
+            <i class="fas fa-utensils"></i>
+            <span>投喂</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+</body>
+</html> 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>健康评估 - 宠爱回家</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">12:00</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="app-header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1>健康评估</h1>
+            <div class="header-actions">
+                <i class="fas fa-history"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="app-content">
+        <!-- 上传方式选择 -->
+        <section class="upload-methods">
+            <div class="method-tabs">
+                <button class="method-tab active" data-method="upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>上传照片</span>
+                </button>
+                <button class="method-tab" data-method="camera">
+                    <i class="fas fa-camera"></i>
+                    <span>拍摄照片</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 上传区域 -->
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>点击或拖拽上传宠物照片</p>
+                    <input type="file" id="imageUpload" accept="image/*" hidden>
+                </div>
+                <div class="upload-tips">
+                    <p><i class="fas fa-info-circle"></i> 请上传清晰的宠物正面照片，以便获得更准确的评估结果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 摄像头拍摄区域 -->
+        <section class="camera-section" id="cameraSection" style="display: none;">
+            <div class="camera-container">
+                <video id="cameraPreview" autoplay playsinline></video>
+                <div class="camera-controls">
+                    <button class="camera-btn" id="switchCamera">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="camera-btn capture-btn" id="captureBtn">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <button class="camera-btn" id="flashBtn">
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="camera-tips">
+                <p><i class="fas fa-info-circle"></i> 请确保宠物在光线充足的环境下，保持正面拍摄</p>
+            </div>
+        </section>
+
+        <!-- 预览区域 -->
+        <section class="preview-section" id="previewSection" style="display: none;">
+            <div class="preview-container">
+                <img id="previewImage" src="" alt="预览图片">
+                <button class="retake-btn" id="retakeBtn">
+                    <i class="fas fa-redo"></i> 重新拍摄
+                </button>
+            </div>
+        </section>
+
+        <!-- 评估结果 -->
+        <section class="assessment-section" id="assessmentSection" style="display: none;">
+            <div class="assessment-header">
+                <h3>AI健康评估结果</h3>
+                <span class="assessment-time">评估时间：<span id="assessmentTime"></span></span>
+            </div>
+            
+            <div class="assessment-result">
+                <div class="result-item">
+                    <div class="result-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="result-content">
+                        <h4>整体健康状态</h4>
+                        <div class="progress-bar">
+                            <div class="progress" id="healthScore"></div>
+                        </div>
+                        <p class="result-desc" id="healthDesc"></p>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="result-content">
+                        <h4>眼部健康</h4>
+                        <p class="result-desc" id="eyeHealth"></p>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <div class="result-content">
+                        <h4>皮肤毛发</h4>
+                        <p class="result-desc" id="skinHealth"></p>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="result-content">
+                        <h4>体型评估</h4>
+                        <p class="result-desc" id="bodyCondition"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assessment-actions">
+                <button class="share-btn">
+                    <i class="fas fa-share-alt"></i> 分享结果
+                </button>
+                <button class="save-btn">
+                    <i class="fas fa-save"></i> 保存报告
+                </button>
+            </div>
+        </section>
+
+        <!-- 开始评估按钮 -->
+        <div class="action-buttons">
+            <button class="primary-btn" id="startAssessment" disabled>
+                <i class="fas fa-play"></i> 开始评估
+            </button>
+        </div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>地图</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-utensils"></i>
+            <span>投喂</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+
+    <script src="js/health-assessment.js"></script>
+</body>
+</html> 

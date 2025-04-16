@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>发现动物 - 宠爱回家</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">12:00</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="app-header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1>发现动物</h1>
+            <div class="header-actions">
+                <i class="fas fa-filter"></i>
+            </div>
+        </div>
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="搜索动物名称或编号">
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="app-content">
+        <!-- 发现模式选择 -->
+        <section class="discover-modes">
+            <div class="mode-tabs">
+                <button class="mode-tab active" data-mode="recent">
+                    <i class="fas fa-clock"></i>
+                    <span>最近发现</span>
+                </button>
+                <button class="mode-tab" data-mode="map">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>地图模式</span>
+                </button>
+                <button class="mode-tab" data-mode="list">
+                    <i class="fas fa-list"></i>
+                    <span>列表模式</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 最近发现区域 -->
+        <section class="recent-discoveries" id="recentSection">
+            <div class="discovery-feed">
+                <!-- 发现卡片 -->
+                <div class="discovery-card">
+                    <div class="discovery-header">
+                        <div class="camera-info">
+                            <i class="fas fa-video"></i>
+                            <span>东区公园摄像头 #A12</span>
+                        </div>
+                        <span class="discovery-time">10分钟前</span>
+                    </div>
+                    <div class="discovery-image">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba" alt="发现的动物">
+                        <div class="discovery-status new">
+                            <i class="fas fa-star"></i>
+                            <span>新发现</span>
+                        </div>
+                    </div>
+                    <div class="discovery-info">
+                        <h3>橘猫小暖</h3>
+                        <p class="discovery-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            东区公园南门
+                        </p>
+                        <div class="discovery-actions">
+                            <button class="action-btn view-profile">
+                                <i class="fas fa-user"></i>
+                                <span>查看档案</span>
+                            </button>
+                            <button class="action-btn view-track">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>查看轨迹</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discovery-card">
+                    <div class="discovery-header">
+                        <div class="camera-info">
+                            <i class="fas fa-video"></i>
+                            <span>西区商业街摄像头 #B05</span>
+                        </div>
+                        <span class="discovery-time">30分钟前</span>
+                    </div>
+                    <div class="discovery-image">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="发现的动物">
+                        <div class="discovery-status registered">
+                            <i class="fas fa-check-circle"></i>
+                            <span>已登记</span>
+                        </div>
+                    </div>
+                    <div class="discovery-info">
+                        <h3>小白</h3>
+                        <p class="discovery-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            西区商业街后巷
+                        </p>
+                        <div class="discovery-actions">
+                            <button class="action-btn view-profile">
+                                <i class="fas fa-user"></i>
+                                <span>查看档案</span>
+                            </button>
+                            <button class="action-btn view-track">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>查看轨迹</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地图模式 -->
+        <section class="map-section" id="mapSection" style="display: none;">
+            <div id="discoveryMap"></div>
+            <div class="map-controls">
+                <button class="map-btn" id="refreshMap">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="map-btn" id="centerMap">
+                    <i class="fas fa-crosshairs"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- 列表模式 -->
+        <section class="list-section" id="listSection" style="display: none;">
+            <div class="animal-list">
+                <div class="list-filters">
+                    <button class="filter-btn active">全部</button>
+                    <button class="filter-btn">新发现</button>
+                    <button class="filter-btn">已登记</button>
+                    <button class="filter-btn">需要救助</button>
+                </div>
+                <div class="list-items">
+                    <!-- 列表项 -->
+                    <div class="list-item">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba" alt="动物头像">
+                        <div class="item-info">
+                            <h4>橘猫小暖</h4>
+                            <p>新发现 · 东区公园</p>
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-icon">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="动物头像">
+                        <div class="item-info">
+                            <h4>小白</h4>
+                            <p>已登记 · 西区商业街</p>
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-icon">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 动物档案弹窗 -->
+        <div class="modal" id="animalProfileModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>动物档案</h3>
+                    <button class="close-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="profile-header">
+                        <img src="" alt="动物照片" id="profileImage">
+                        <div class="profile-info">
+                            <h2 id="profileName"></h2>
+                            <p id="profileStatus"></p>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <label>发现时间</label>
+                            <p id="profileDiscoveryTime"></p>
+                        </div>
+                        <div class="detail-item">
+                            <label>最后出现位置</label>
+                            <p id="profileLastLocation"></p>
+                        </div>
+                        <div class="detail-item">
+                            <label>特征描述</label>
+                            <p id="profileDescription"></p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-edit"></i>
+                            <span>编辑信息</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享档案</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 轨迹弹窗 -->
+        <div class="modal" id="trackModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>活动轨迹</h3>
+                    <button class="close-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="trackMap"></div>
+                    <div class="track-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:30</div>
+                            <div class="timeline-content">
+                                <p>东区公园南门</p>
+                                <span class="timeline-status">发现</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:15</div>
+                            <div class="timeline-content">
+                                <p>东区公园中心广场</p>
+                                <span class="timeline-status">经过</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="discover.html" class="nav-item active">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="feeding.html" class="nav-item">
+            <i class="fas fa-utensils"></i>
+            <span>投喂</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="js/discover.js"></script>
+</body>
+</html> 

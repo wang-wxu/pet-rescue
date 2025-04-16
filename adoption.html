@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我要领养 - 宠爱回家</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/adoption.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">12:00</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="app-header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1>我要领养</h1>
+            <div class="header-actions">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="搜索宠物名称、品种或特征">
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="app-content">
+        <!-- 筛选区域 -->
+        <section class="filter-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">
+                    <i class="fas fa-paw"></i>
+                    <span>全部</span>
+                </button>
+                <button class="filter-tab" data-filter="cat">
+                    <i class="fas fa-cat"></i>
+                    <span>猫咪</span>
+                </button>
+                <button class="filter-tab" data-filter="dog">
+                    <i class="fas fa-dog"></i>
+                    <span>狗狗</span>
+                </button>
+                <button class="filter-tab" data-filter="other">
+                    <i class="fas fa-kiwi-bird"></i>
+                    <span>其他</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 领养宠物列表 -->
+        <section class="pet-listings">
+            <!-- 宠物卡片 -->
+            <div class="pet-card" data-type="cat">
+                <div class="pet-image">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba" alt="橘猫小暖">
+                    <span class="pet-age">1岁3个月</span>
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>橘猫小暖</h3>
+                        <span class="gender female">
+                            <i class="fas fa-venus"></i>
+                        </span>
+                    </div>
+                    <p class="pet-breed">中华田园猫</p>
+                    <div class="pet-tags">
+                        <span class="tag">已绝育</span>
+                        <span class="tag">已驱虫</span>
+                        <span class="tag">亲人</span>
+                    </div>
+                    <div class="pet-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京市朝阳区</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pet-card" data-type="dog">
+                <div class="pet-image">
+                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="小白">
+                    <span class="pet-age">2岁5个月</span>
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>小白</h3>
+                        <span class="gender male">
+                            <i class="fas fa-mars"></i>
+                        </span>
+                    </div>
+                    <p class="pet-breed">萨摩耶</p>
+                    <div class="pet-tags">
+                        <span class="tag">已绝育</span>
+                        <span class="tag">已驱虫</span>
+                        <span class="tag">活泼</span>
+                    </div>
+                    <div class="pet-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京市海淀区</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pet-card" data-type="cat">
+                <div class="pet-image">
+                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5" alt="黑猫警长">
+                    <span class="pet-age">3岁</span>
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>黑猫警长</h3>
+                        <span class="gender male">
+                            <i class="fas fa-mars"></i>
+                        </span>
+                    </div>
+                    <p class="pet-breed">英短黑猫</p>
+                    <div class="pet-tags">
+                        <span class="tag">已绝育</span>
+                        <span class="tag">已驱虫</span>
+                        <span class="tag">独立</span>
+                    </div>
+                    <div class="pet-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京市西城区</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pet-card" data-type="dog">
+                <div class="pet-image">
+                    <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8" alt="奶茶">
+                    <span class="pet-age">9个月</span>
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>奶茶</h3>
+                        <span class="gender female">
+                            <i class="fas fa-venus"></i>
+                        </span>
+                    </div>
+                    <p class="pet-breed">金毛</p>
+                    <div class="pet-tags">
+                        <span class="tag">已绝育</span>
+                        <span class="tag">已驱虫</span>
+                        <span class="tag">粘人</span>
+                    </div>
+                    <div class="pet-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京市丰台区</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pet-card" data-type="other">
+                <div class="pet-image">
+                    <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca" alt="小兔子">
+                    <span class="pet-age">6个月</span>
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>小兔子</h3>
+                        <span class="gender male">
+                            <i class="fas fa-mars"></i>
+                        </span>
+                    </div>
+                    <p class="pet-breed">荷兰垂耳兔</p>
+                    <div class="pet-tags">
+                        <span class="tag">已驱虫</span>
+                        <span class="tag">温顺</span>
+                    </div>
+                    <div class="pet-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京市通州区</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 领养流程指南 -->
+        <section class="adoption-guide">
+            <h2 class="section-title">领养须知</h2>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>浏览选择</h3>
+                        <p>根据您的需求和条件选择合适的宠物</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>申请领养</h3>
+                        <p>提交领养申请并填写详细信息</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>沟通确认</h3>
+                        <p>工作人员会与您联系沟通领养事宜</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-home"></i>
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>完成领养</h3>
+                        <p>签署协议，带宠物回家</p>
+                    </div>
+                </div>
+            </div>
+            <button class="guide-more-btn">
+                <i class="fas fa-info-circle"></i>
+                查看更多领养说明
+            </button>
+        </section>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>地图</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-utensils"></i>
+            <span>投喂</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+
+    <!-- 宠物详情弹窗 -->
+    <div class="modal" id="petDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>宠物详情</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="pet-detail-slider">
+                    <img src="" alt="宠物照片" id="petDetailImage">
+                    <div class="slider-nav">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <div class="pet-detail-info">
+                    <div class="detail-header">
+                        <h2 id="petDetailName"></h2>
+                        <span id="petDetailGender"></span>
+                    </div>
+                    <div class="detail-item">
+                        <label>品种</label>
+                        <p id="petDetailBreed"></p>
+                    </div>
+                    <div class="detail-item">
+                        <label>年龄</label>
+                        <p id="petDetailAge"></p>
+                    </div>
+                    <div class="detail-item">
+                        <label>健康状况</label>
+                        <p id="petDetailHealth"></p>
+                    </div>
+                    <div class="detail-item">
+                        <label>性格特点</label>
+                        <p id="petDetailCharacter"></p>
+                    </div>
+                    <div class="detail-item">
+                        <label>领养要求</label>
+                        <p id="petDetailRequirements"></p>
+                    </div>
+                    <div class="detail-item">
+                        <label>收养地址</label>
+                        <p id="petDetailLocation"></p>
+                    </div>
+                    <div class="detail-item">
+                        <label>联系方式</label>
+                        <p id="petDetailContact"></p>
+                    </div>
+                </div>
+                <div class="pet-detail-actions">
+                    <button class="action-btn adoption-btn">
+                        <i class="fas fa-heart"></i>
+                        <span>申请领养</span>
+                    </button>
+                    <button class="action-btn contact-btn">
+                        <i class="fas fa-comment"></i>
+                        <span>联系收养人</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/adoption.js"></script>
+</body>
+</html> 

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>食物投喂 - 宠爱回家</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">12:00</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="app-header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1>食物投喂</h1>
+            <div class="header-actions">
+                <i class="fas fa-history"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="app-content">
+        <!-- 投喂设备状态 -->
+        <section class="feeder-status">
+            <div class="device-card">
+                <div class="device-header">
+                    <div class="device-name">
+                        <i class="fas fa-utensils"></i>
+                        <span>智能投喂器 #F001</span>
+                    </div>
+                    <span class="device-badge online">在线</span>
+                </div>
+                <div class="device-info">
+                    <div class="info-item">
+                        <div class="info-label">剩余食物</div>
+                        <div class="info-value">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                            <span>65%</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">电池电量</div>
+                        <div class="info-value">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                            <span>80%</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">上次投喂</div>
+                        <div class="info-value">今天 08:30</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 投喂模式选择 -->
+        <section class="feeding-modes">
+            <h2 class="section-title">选择投喂方式</h2>
+            <div class="mode-cards">
+                <div class="mode-card active" data-mode="manual">
+                    <div class="mode-icon">
+                        <i class="fas fa-hand-point-up"></i>
+                    </div>
+                    <div class="mode-info">
+                        <h3>手动投喂</h3>
+                        <p>立即投放指定量的食物</p>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="auto">
+                    <div class="mode-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="mode-info">
+                        <h3>自动投喂</h3>
+                        <p>根据动物需求自动投喂</p>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="schedule">
+                    <div class="mode-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="mode-info">
+                        <h3>定时投喂</h3>
+                        <p>按照设定的时间定时投喂</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 手动投喂设置 -->
+        <section class="feeding-settings manual-settings">
+            <h2 class="section-title">手动投喂设置</h2>
+            <div class="setting-card">
+                <div class="setting-item">
+                    <div class="setting-label">投喂量</div>
+                    <div class="setting-control">
+                        <button class="amount-btn decrease">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="amount-display">
+                            <span class="amount-value">30</span>
+                            <span class="amount-unit">克</span>
+                        </div>
+                        <button class="amount-btn increase">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">食物类型</div>
+                    <div class="setting-control">
+                        <select class="food-select">
+                            <option value="dry">干粮</option>
+                            <option value="wet">湿粮</option>
+                            <option value="mixed">混合粮</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="feed-now-btn">
+                    <i class="fas fa-play"></i>
+                    立即投喂
+                </button>
+            </div>
+        </section>
+
+        <!-- 自动投喂设置 -->
+        <section class="feeding-settings auto-settings" style="display: none;">
+            <h2 class="section-title">自动投喂设置</h2>
+            <div class="setting-card">
+                <div class="setting-item">
+                    <div class="setting-label">智能识别</div>
+                    <div class="setting-control">
+                        <label class="switch">
+                            <input type="checkbox" id="smartDetect" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>启用后，投喂器会通过AI识别动物并自动投放适量食物</span>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">单次投喂上限</div>
+                    <div class="setting-control">
+                        <button class="amount-btn decrease">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="amount-display">
+                            <span class="amount-value">50</span>
+                            <span class="amount-unit">克</span>
+                        </div>
+                        <button class="amount-btn increase">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">每日投喂次数限制</div>
+                    <div class="setting-control">
+                        <button class="amount-btn decrease">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="amount-display">
+                            <span class="amount-value">3</span>
+                            <span class="amount-unit">次</span>
+                        </div>
+                        <button class="amount-btn increase">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="save-settings-btn">
+                    <i class="fas fa-save"></i>
+                    保存设置
+                </button>
+            </div>
+        </section>
+
+        <!-- 定时投喂设置 -->
+        <section class="feeding-settings schedule-settings" style="display: none;">
+            <h2 class="section-title">定时投喂设置</h2>
+            <div class="setting-card">
+                <div class="schedule-list">
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>08:00</span>
+                        </div>
+                        <div class="schedule-info">
+                            <div class="schedule-amount">30克 · 干粮</div>
+                            <div class="schedule-days">
+                                <span class="day active">一</span>
+                                <span class="day active">二</span>
+                                <span class="day active">三</span>
+                                <span class="day active">四</span>
+                                <span class="day active">五</span>
+                                <span class="day">六</span>
+                                <span class="day">日</span>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <button class="edit-schedule">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>12:30</span>
+                        </div>
+                        <div class="schedule-info">
+                            <div class="schedule-amount">40克 · 混合粮</div>
+                            <div class="schedule-days">
+                                <span class="day active">一</span>
+                                <span class="day active">二</span>
+                                <span class="day active">三</span>
+                                <span class="day active">四</span>
+                                <span class="day active">五</span>
+                                <span class="day active">六</span>
+                                <span class="day active">日</span>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <button class="edit-schedule">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>18:00</span>
+                        </div>
+                        <div class="schedule-info">
+                            <div class="schedule-amount">35克 · 干粮</div>
+                            <div class="schedule-days">
+                                <span class="day active">一</span>
+                                <span class="day active">二</span>
+                                <span class="day active">三</span>
+                                <span class="day active">四</span>
+                                <span class="day active">五</span>
+                                <span class="day active">六</span>
+                                <span class="day active">日</span>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <button class="edit-schedule">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-schedule-btn">
+                    <i class="fas fa-plus"></i>
+                    添加定时投喂
+                </button>
+            </div>
+        </section>
+
+        <!-- 投喂记录 -->
+        <section class="feeding-history">
+            <h2 class="section-title">
+                最近投喂记录
+                <a href="#" class="view-all">查看全部</a>
+            </h2>
+            <div class="history-list">
+                <div class="history-item">
+                    <div class="history-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="history-info">
+                        <div class="history-title">手动投喂</div>
+                        <div class="history-desc">30克干粮</div>
+                        <div class="history-time">今天 08:30</div>
+                    </div>
+                    <div class="history-status success">
+                        <i class="fas fa-check-circle"></i>
+                        <span>成功</span>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="history-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="history-info">
+                        <div class="history-title">定时投喂</div>
+                        <div class="history-desc">35克干粮</div>
+                        <div class="history-time">昨天 18:00</div>
+                    </div>
+                    <div class="history-status success">
+                        <i class="fas fa-check-circle"></i>
+                        <span>成功</span>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="history-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="history-info">
+                        <div class="history-title">自动投喂</div>
+                        <div class="history-desc">20克干粮</div>
+                        <div class="history-time">昨天 14:15</div>
+                    </div>
+                    <div class="history-status success">
+                        <i class="fas fa-check-circle"></i>
+                        <span>成功</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="discover.html" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="feeding.html" class="nav-item active">
+            <i class="fas fa-utensils"></i>
+            <span>投喂</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+
+    <!-- 添加定时投喂弹窗 -->
+    <div class="modal" id="addScheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加定时投喂</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>投喂时间</label>
+                    <input type="time" class="time-input" value="08:00">
+                </div>
+                <div class="form-group">
+                    <label>投喂量 (克)</label>
+                    <div class="amount-control">
+                        <button class="amount-btn decrease">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="number" class="amount-input" value="30" min="5" max="100">
+                        <button class="amount-btn increase">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>食物类型</label>
+                    <select class="food-select">
+                        <option value="dry">干粮</option>
+                        <option value="wet">湿粮</option>
+                        <option value="mixed">混合粮</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>重复</label>
+                    <div class="days-select">
+                        <button class="day-btn" data-day="1">一</button>
+                        <button class="day-btn" data-day="2">二</button>
+                        <button class="day-btn" data-day="3">三</button>
+                        <button class="day-btn" data-day="4">四</button>
+                        <button class="day-btn" data-day="5">五</button>
+                        <button class="day-btn" data-day="6">六</button>
+                        <button class="day-btn" data-day="0">日</button>
+                    </div>
+                </div>
+                <button class="save-schedule-btn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/feeding.js"></script>
+</body>
+</html> 

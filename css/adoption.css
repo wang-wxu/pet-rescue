@@ -1,0 +1,471 @@
+/* 领养页面样式 */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FF9800;
+    --accent-color: #2196F3;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #757575;
+    --text-color: #333333;
+    --border-radius: 12px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* 筛选区域样式 */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-tabs {
+    display: flex;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    padding: 5px;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filter-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-tab {
+    flex: 1;
+    min-width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--dark-gray);
+    transition: var(--transition);
+}
+
+.filter-tab.active {
+    background-color: #e8f5e9;
+    color: var(--primary-color);
+    border-radius: 8px;
+}
+
+.filter-tab i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.filter-tab span {
+    font-size: 12px;
+}
+
+/* 宠物列表样式 */
+.pet-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pet-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.pet-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.pet-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.pet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.pet-card:hover .pet-image img {
+    transform: scale(1.05);
+}
+
+.pet-age {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.pet-info {
+    padding: 15px;
+}
+
+.pet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.pet-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.gender {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.gender.male {
+    background-color: #e3f2fd;
+    color: #2196F3;
+}
+
+.gender.female {
+    background-color: #fce4ec;
+    color: #e91e63;
+}
+
+.pet-breed {
+    font-size: 14px;
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+}
+
+.pet-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.pet-location {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--dark-gray);
+}
+
+.pet-location i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+/* 领养指南样式 */
+.adoption-guide {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.step-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #e8f5e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.step-number {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.step-content p {
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin: 0;
+}
+
+.guide-more-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    margin-top: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.guide-more-btn:hover {
+    background-color: var(--medium-gray);
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--dark-gray);
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 15px;
+    overflow-y: auto;
+    max-height: calc(85vh - 60px);
+}
+
+.pet-detail-slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pet-detail-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.slider-dot.active {
+    background-color: white;
+}
+
+.pet-detail-info {
+    margin-bottom: 20px;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.detail-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+}
+
+.detail-item label {
+    display: block;
+    color: var(--dark-gray);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.detail-item p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.pet-detail-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.adoption-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.contact-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+/* 响应式设计 */
+@media (min-width: 768px) {
+    .pet-listings {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .steps-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .pet-listings {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .steps-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-tab {
+        min-width: 60px;
+        padding: 8px;
+    }
+    
+    .pet-image {
+        height: 150px;
+    }
+    
+    .pet-detail-slider {
+        height: 180px;
+    }
+    
+    .pet-detail-actions {
+        flex-direction: column;
+    }
+} 
